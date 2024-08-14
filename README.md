@@ -32,5 +32,6 @@ Implement more sophisticated models for better performance.
 Consider using metrics like F1 score for balanced evaluation.
 Code and Resources
 The complete Jupyter notebook with the code can be found here.
+
 Author
 Shoval Benzer
