@@ -1,7 +1,3 @@
-Below is the complete enhanced README.md file that preserves all the detailed information while incorporating expanded glossaries and illustrative images. You can copy the entire content into a Markdown file (README.md) for your study guide.
-
----
-
 # Machine Learning Study Guidebook
 
 This guidebook is a comprehensive reference covering key topics in machine learning—from foundational methods to advanced ensemble techniques. The content is organized into two parts:
