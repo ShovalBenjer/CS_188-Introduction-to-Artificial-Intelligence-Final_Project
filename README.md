@@ -32,7 +32,7 @@ Each section includes detailed concepts, key equations, quiz highlights, essay p
   - [7. K-Nearest Neighbors (KNN)](#k-nearest-neighbors-knn)
   - [8. Bayesian Classifiers](#bayesian-classifiers)
   - [9. Decision Trees & Random Forests](#decision-trees--random-forests)
-
+  
 ---
 
 ## Part 1: Foundations & Core Methods
@@ -42,15 +42,15 @@ Each section includes detailed concepts, key equations, quiz highlights, essay p
 **Overview:**  
 Linear Regression is a supervised learning technique for modeling the relationship between a numeric target and one or more features by fitting a linear equation. For a single variable, the model is:
 
-\[
+$$
 \hat{y} = w_0 + w_1 x
-\]
+$$
 
 In the multivariable case, it is:
 
-\[
+$$
 \hat{y} = w_0 + w_1 x_1 + \dots + w_p x_p
-\]
+$$
 
 The method minimizes the **Mean Squared Error (MSE)** between predictions and true values, finding the best-fit line via least squares.
 
@@ -61,12 +61,10 @@ The method minimizes the **Mean Squared Error (MSE)** between predictions and tr
 
 - **Linear Hypothesis:** The assumption of a linear relationship between features and target.
 - **Parameters/Weights:**  
-  - **\(w_0\) (Intercept/Bias):** The predicted value when all features are zero.  
-  - **\(w_1, \dots, w_p\):** The slopes showing how each feature affects the prediction.
-- **Cost Function (MSE):**  
-  \[
-  \text{MSE} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2
-  \]
+  - **$$\(w_0\) (Intercept/Bias)$$:** The predicted value when all features are zero.  
+  - **$$\(w_1, \dots, w_p\)$$:** The slopes showing how each feature affects the prediction.
+- **Cost Function (MSE):**
+    **$$\text{MSE} = \frac{1}{n} \sum_{i=1}^{n} \bigl(y_i-\hat{y}_i\bigr)^2$$**
 - **Training vs. Test Error:** Training error is measured on the training data; generalization (test) error shows performance on unseen data.
 - **Outliers:** Outliers can disproportionately affect MSE, skewing the model.
 
@@ -77,9 +75,12 @@ The method minimizes the **Mean Squared Error (MSE)** between predictions and tr
 - **Coefficient (Weight):** Parameter \(w_i\) indicating the effect of a feature on \(y\).
 - **Intercept (Bias):** Constant \(w_0\) representing the output when all features are zero.
 - **Least Squares:** Method to fit the model by minimizing the sum of squared residuals.
-- **Residual (Error):** The difference \(y - \hat{y}\).
+- **Residual (Error):** The difference $$\(y - \hat{y}\)$$.
 - **Underfitting:** When a model is too simple, leading to high bias.
 
+[![Watch the video](https://img.youtube.com/vi/3g-e2aiRfbU/maxresdefault.jpg)](https://youtu.be/3g-e2aiRfbU)
+
+### [An Intuitive Introduction to Linear Regression](https://youtu.be/3g-e2aiRfbU)
 ---
 
 ### Logistic Regression
@@ -87,9 +88,7 @@ The method minimizes the **Mean Squared Error (MSE)** between predictions and tr
 **Overview:**  
 Logistic Regression is used for binary classification. It models the probability of a positive class by applying the sigmoid function to a linear combination of features:
 
-\[
-p(x) = \frac{1}{1 + e^{-(w_0 + w_1 x_1 + \dots + w_p x_p)}}
-\]
+$$p(x) = \frac{1}{1 + e^{-(w_0 + w_1 x_1 + \dots + w_p x_p)}}$$
 
 A probability above a chosen threshold (typically 0.5) indicates the positive class.
 
@@ -105,12 +104,23 @@ A probability above a chosen threshold (typically 0.5) indicates the positive cl
 
 **Glossary:**
 
-- **Sigmoid/Logistic Function:** \(\sigma(z)=\frac{1}{1+e^{-z}}\), mapping linear outputs to probabilities.
-- **Odds & Log-Odds:** Odds are \(p/(1-p)\); log-odds are the natural log of the odds.
+- **Sigmoid/Logistic Function:**  
+  $$\sigma(z)=\frac{1}{1+e^{-z}}$$  
+  mapping linear outputs to probabilities.
+- **Odds & Log-Odds:**  
+  Odds are given by  
+  $$\frac{p}{1-p}$$  
+  and log-odds are the natural logarithm of the odds.
 - **Binary Classification:** Predicting two possible outcomes.
 - **Decision Threshold:** The cutoff (often 0.5) used to classify the probability output.
-- **Odds Ratio:** \(e^{w_i}\); quantifies the change in odds per unit increase in feature \(i\).
+- **Odds Ratio:** $$\(e^{w_i}\)$$; quantifies the change in odds per unit increase in feature $$\(i\)$$.
 - **Multinomial Logistic Regression:** Extends logistic regression to multi-class problems.
+
+
+[![Watch the video](https://img.youtube.com/vi/EKm0spFxFG4/maxresdefault.jpg)](https://youtu.be/EKm0spFxFG4)
+
+### [An Quick Intro to Logistic Regression](https://youtu.be/EKm0spFxFG4)
+
 
 ---
 
@@ -119,9 +129,7 @@ A probability above a chosen threshold (typically 0.5) indicates the positive cl
 **Overview:**  
 The Bias-Variance Trade-off describes the balance between the error from erroneous assumptions (bias) and the error from sensitivity to small data fluctuations (variance). An optimal model minimizes overall error by finding a balance between underfitting and overfitting.
 
-\[
-\text{Expected Error} = \text{Bias}^2 + \text{Variance} + \text{Irreducible Noise}
-\]
+$$\text{Expected Error} = \text{Bias}^2 + \text{Variance} + \text{Irreducible Noise}$$
 
 ![Bias–Variance Trade-off](https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Bias_and_variance_contributing_to_total_error.svg/1024px-Bias_and_variance_contributing_to_total_error.svg.png)  
 *Figure: Illustration of bias and variance contributions to total error.*
@@ -145,61 +153,46 @@ Key Performance Indicators (KPIs) are metrics used to evaluate classification an
 **Classification Metrics:**
 
 - **Confusion Matrix:**  
-  |              | Predicted Positive | Predicted Negative |
-  |--------------|--------------------|--------------------|
-  | **Actual Positive** | True Positive (TP)  | False Negative (FN) |
-  | **Actual Negative** | False Positive (FP) | True Negative (TN)  |
+
+  |                      | Predicted Positive | Predicted Negative |
+  |----------------------|--------------------|--------------------|
+  | **Actual Positive**  | True Positive (TP) | False Negative (FN)|
+  | **Actual Negative**  | False Positive (FP)| True Negative (TN) |
 
 - **Accuracy:**  
-  \[
-  \text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN}
-  \]
+  $$\text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN}$$
 
 - **Precision:**  
-  \[
-  \text{Precision} = \frac{TP}{TP+FP}
-  \]
+  $$\text{Precision} = \frac{TP}{TP+FP}$$
 
 - **Recall (Sensitivity):**  
-  \[
-  \text{Recall} = \frac{TP}{TP+FN}
-  \]
+  $$\text{Recall} = \frac{TP}{TP+FN}$$
 
 - **F1 Score:**  
-  \[
-  F1 = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}
-  \]
+  $$F1 = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}$$
 
 - **Specificity:**  
-  \[
-  \text{Specificity} = \frac{TN}{TN+FP}
-  \]
+  $$\text{Specificity} = \frac{TN}{TN+FP}$$
 
-- **ROC AUC:** Area under the Receiver Operating Characteristic curve.
+- **ROC AUC:** The area under the Receiver Operating Characteristic curve, summarizing the trade-off between sensitivity and specificity.
 
 **Regression Metrics:**
 
-- **MSE:**  
-  \[
-  \text{MSE} = \frac{1}{n}\sum (y - \hat{y})^2
-  \]
+- **Mean Squared Error (MSE):**  
+  $$\text{MSE} = \frac{1}{n}\sum (y - \hat{y})^2$$
 
-- **RMSE:**  
-  \[
-  \text{RMSE} = \sqrt{\text{MSE}}
-  \]
+- **Root Mean Squared Error (RMSE):**  
+  $$\text{RMSE} = \sqrt{\text{MSE}}$$
 
-- **MAE:**  
-  \[
-  \text{MAE} = \frac{1}{n}\sum |y - \hat{y}|
-  \]
+- **Mean Absolute Error (MAE):**  
+  $$\text{MAE} = \frac{1}{n}\sum |y - \hat{y}|$$
 
-- **R-squared:** Proportion of variance explained by the model.
+- **R-squared:** Proportion of variance in the target explained by the model.
 
 **Glossary:**
 
-- **True Positive / Negative (TP/TN):** Correctly predicted instances.
-- **False Positive / Negative (FP/FN):** Misclassified instances.
+- **True Positive/Negative (TP/TN):** Correctly predicted instances.
+- **False Positive/Negative (FP/FN):** Misclassified instances.
 - **Precision:** The proportion of positive predictions that are correct.
 - **Recall:** The proportion of actual positives that are correctly predicted.
 - **F1 Score:** Harmonic mean of precision and recall.
@@ -225,8 +218,12 @@ Validation is critical to ensure a model’s generalizability. Data is typically
 - **Test Set:** A final hold-out set used only for final performance evaluation.
 - **Hold-Out Validation:** A single split of data into training and test sets.
 - **k-Fold Cross-Validation:** The data is divided into k parts and the model is trained and validated k times.
-- **Hyperparameter Tuning:** Adjusting model settings (e.g. learning rate, tree depth) based on validation performance.
+- **Hyperparameter Tuning:** Adjusting model settings (e.g., learning rate, tree depth) based on validation performance.
 - **Overfitting/Underfitting:** When validation performance indicates that the model is either too complex or too simple relative to the data.
+
+[![Watch the video](https://img.youtube.com/vi/fSytzGwwBVw/maxresdefault.jpg)](https://youtu.be/fSytzGwwBVw)
+
+### [Cross Validation](https://youtu.be/fSytzGwwBVw)
 
 ---
 
@@ -240,8 +237,8 @@ High variance (overfitting) occurs when a model fits training data too closely, 
 **Techniques:**
 
 - **Regularization:**  
-  - **L2 (Ridge):** Adds \(\lambda \sum w_i^2\) to the loss, encouraging small weights.
-  - **L1 (Lasso):** Adds \(\lambda \sum |w_i|\), promoting sparsity by zeroing out some weights.
+  - **L2 (Ridge):** Adds $$\lambda \sum w_i^2$$ to the loss, encouraging small weights.
+  - **L1 (Lasso):** Adds $$\lambda \sum |w_i|$$, promoting sparsity by zeroing out some weights.
 - **Ensemble Methods:**  
   - **Bagging:** Trains multiple models on bootstrap samples and averages their predictions.
 - **Early Stopping:** Monitors validation error during training to stop before overfitting.
@@ -255,6 +252,17 @@ High variance (overfitting) occurs when a model fits training data too closely, 
 - **Bagging:** Ensemble method using bootstrap samples to train multiple models.
 - **Early Stopping:** Halting training based on validation error trends.
 - **Bias–Variance Trade-off:** Balancing model complexity to avoid too much bias (underfitting) or variance (overfitting).
+
+
+
+[![Watch the video](https://img.youtube.com/vi/aBgMRXSqd04/maxresdefault.jpg)](https://youtu.be/aBgMRXSqd04)
+
+### [L1 Vs L2 Regularzation Methods](https://youtu.be/aBgMRXSqd04)
+
+---
+[![Watch the video](https://img.youtube.com/vi/tjy0yL1rRRU/maxresdefault.jpg)](https://youtu.be/tjy0yL1rRRU)
+
+### [Bagging vs Boosting](https://youtu.be/tjy0yL1rRRU)
 
 ---
 
@@ -281,6 +289,9 @@ KNN is an instance-based learning algorithm used for both classification (by maj
 - **Weighted KNN:** A variant where nearer neighbors have more influence.
 - **Curse of Dimensionality:** Phenomenon where high-dimensional spaces dilute the significance of distance.
 
+[![Watch the video](https://img.youtube.com/vi/b6uHw7QW_n4/maxresdefault.jpg)](https://youtu.be/b6uHw7QW_n4)
+
+### [K nearest Neighbors](https://youtu.be/b6uHw7QW_n4)
 ---
 
 ### Bayesian Classifiers
@@ -288,9 +299,9 @@ KNN is an instance-based learning algorithm used for both classification (by maj
 **Overview:**  
 Bayesian classifiers use Bayes’ Theorem to compute the probability of each class given the features. The most common form is the Naive Bayes classifier, which assumes features are conditionally independent given the class.
 
-\[
+$$
 P(C \mid X) \propto P(C) \prod_{i=1}^n P(X_i \mid C)
-\]
+$$
 
 **Key Points:**
 
@@ -307,6 +318,7 @@ P(C \mid X) \propto P(C) \prod_{i=1}^n P(X_i \mid C)
 - **Naive Bayes:** A Bayesian classifier assuming feature independence.
 - **Conditional Independence:** When the occurrence of one feature is independent of another given the class.
 - **Laplace Smoothing:** Technique to prevent zero likelihood by adding a small constant to counts.
+
 
 ---
 
@@ -326,10 +338,12 @@ Decision Trees split data recursively based on feature tests to predict outcomes
   - Use bagging and random feature selection to generate a set of uncorrelated trees whose predictions are aggregated.
   - Often provide robust performance and feature importance measures.
 
-![Decision Tree Example](https://upload.wikimedia.org/wikipedia/commons/f/f7/Decision_tree_iris_dataset.svg)  
+![Decision Tree Example](https://github.com/user-attachments/assets/ffada2e4-eeac-4c18-945d-49abb7118930)
+  
 *Figure: A decision tree example for the Iris dataset.*
 
-![Random Forest Illustration](https://upload.wikimedia.org/wikipedia/commons/7/76/Random_forest_diagram_complete.png)  
+![Random Forest Illustration](https://github.com/user-attachments/assets/032b91d7-7bb0-4978-8973-e6edbe75c89c)
+
 *Figure: Illustration showing multiple decision trees in a Random Forest with random feature selection.*
 
 **Glossary:**
@@ -353,8 +367,6 @@ This README.md file contains a complete, detailed study guide for machine learni
 Feel free to customize further (e.g., add additional images or links to resources) as needed for your studies.
 
 Happy learning!
-
----
 
 
 
